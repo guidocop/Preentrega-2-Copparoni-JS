@@ -9,7 +9,7 @@ let itemAgregado;
 let cantidad;
 let agregar;
 let mostrarTotalCompra;
-let carritoVacio;
+
 const OPCIONUNO = 1;
 const OPCIONDOS = 2;
 const OPCIONTRES = 3;
@@ -42,10 +42,6 @@ function totalCompra () {
     alert(`El monto total de la compra realizada es de:  ${mostrarTotalCompra}$.\n
     Gracias por elegirnos`)}
 
-
-
-
-
 do{menuOpciones = parseInt(prompt('Ingrese una opción dentro del menú: ' + '\n' +
 '1 - Ver listado de productos' + '\n' +
 '2 - Visualizar detalle de la compra' + '\n' +
@@ -62,6 +58,9 @@ switch (menuOpciones){
         }
         cantidad = parseInt(prompt('Ingrese la cantidad que desea agregar:'));
         agregar = prompt('Desea seguir agregando items al carrito?si/no');
+        while((agregar != 'si') && (agregar != 'no')){
+        agregar = prompt('Debe ingresar si o no');
+        }
         facturaCompra.push({nombre: stock[itemAgregado - 1].nombre,
             precioUnitario: stock[itemAgregado - 1].precio,
             cantidad: cantidad,
@@ -85,6 +84,12 @@ switch (menuOpciones){
 
 vermenu = prompt('Desea volver al menú principal?' + '\n' +
 '"si" para volver al menú' + '\n' +
-'"no" para abandonar la tienda');}
-while (vermenu == 'si');
+'"no" para abandonar la tienda');
+
+while ((vermenu != 'si') && (vermenu != 'no')){
+    vermenu = prompt('Debe ingresar una respuesta válida (si/no)')
+}
+}while (vermenu == 'si');
+
+
 
